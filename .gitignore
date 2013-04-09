@@ -1,0 +1,8 @@
+target/classes
+target/tests
+
+*.class
+
+# Package Files #
+*.war
+*.ear

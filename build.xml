@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<project default="jar">
+	<property name="express.version" value="0.1" />
+	
+	<target name="compile">
+		<mkdir dir="target"/>
+		<mkdir dir="target/classes"/>
+		<javac destdir="target/classes" debug="off" includeantruntime="false">
+			<src path="src/main" />
+			<classpath>
+				<fileset dir="lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+    <target name="test" depends="compile">
+		<javac destdir="target/classes" debug="off" includeantruntime="false">
+			<src path="src/test" />
+			<classpath>
+				<fileset dir="lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+        <mkdir dir="target/tests"/>
+        <junit printsummary="yes" haltonfailure="yes" fork="yes">
+            <classpath>
+                <pathelement location="target/classes"/>
+				<fileset dir="lib">
+					<include name="**/*.jar" />
+				</fileset>
+            </classpath>
+            <formatter type="plain"/>
+            <batchtest fork="yes" todir="target/tests">
+                <fileset dir="src/test">
+                    <include name="**/*Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="target/express-${express.version}.jar">
+			<fileset dir="target/classes">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+	</target>
+</project>
