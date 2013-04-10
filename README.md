@@ -77,9 +77,20 @@ the static method `Expression.parse(str)`. If the expression is unparsable, it w
 
 Parsed expressions can then be evaluated against the `ExpressionContext`.
 
+### "Out of the Box" Functions
+
+Since this was originally built for Loadster, most of the included functions have to do with processing data for
+HTTP and web apps.
+
+* `urlencode/urldecode` - apply or strip off URL encoding
+* `jsescape/jsunescape` - escape a string so it can be quoted in JavaScript/JSON
+* `htmlescape/htmlunescape` - escape a string so it can be rendered in an HTML document
+* `xmlescape/xmlunescape` - pretty much the same as htmlescape/htmlunescape
+* `uppercase/lowercase` - umm, yeah...
+
 ### Registering Custom Functions
 
-Most likely you'll need different functions than the dozen or so provided here. No problem, you can register your own.
+Most likely you'll need different functions than the provided ones. No problem, it's easy to register your own.
 
 ```java
 BasicExpressionContext context = new BasicExpressionContext();
