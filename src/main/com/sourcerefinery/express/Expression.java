@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
  * An expression. These are used for getting values from data sets, performing simple conversions, etc.
  */
 public abstract class Expression {
-    private static final Pattern VAR_PATTERN = Pattern.compile("^(\\w+)$");
-    private static final Pattern ARRAY_PATTERN = Pattern.compile("^(\\w+)\\[(\\d+)]$");
-    private static final Pattern FUNCTION_PATTERN = Pattern.compile("^(\\w+)\\((.*?)\\)$");
+    private static final Pattern VAR_PATTERN = Pattern.compile("^\\s*?(\\w+)\\s*?$");
+    private static final Pattern ARRAY_PATTERN = Pattern.compile("^\\s*?(\\w+)\\s*?\\[\\s*?(\\d+)\\s*?]\\s*?$");
+    private static final Pattern FUNCTION_PATTERN = Pattern.compile("^\\s*?(\\w+)\\s*?\\((.*?)\\)\\s*?$");
 
     public abstract String evaluate(ExpressionContext context);
 
@@ -25,7 +25,5 @@ public abstract class Expression {
         } else {
             throw new ParseException("unable to parse expression [" + str + "]");
         }
-
     }
-
 }

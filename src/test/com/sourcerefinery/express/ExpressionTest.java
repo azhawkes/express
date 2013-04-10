@@ -86,4 +86,13 @@ public class ExpressionTest {
 
         Assert.assertEquals("%23%40*%25%23%29%2C%2C-%22", Expression.parse("urlencode(person[4])").evaluate(context));
     }
+
+    @Test
+    public void testParsingWithWhitespace() throws ParseException {
+        BasicExpressionContext context = new BasicExpressionContext();
+
+        context.setArray("person", new String[]{"Yukon", "Cornelius", "yukon@corneliusfamily.com", "42"});
+
+        Assert.assertEquals("CORNELIUS", Expression.parse("     uppercase   (           person  [   1   ]       )  ").evaluate(context));
+    }
 }
