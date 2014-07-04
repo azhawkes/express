@@ -61,6 +61,13 @@ public class ExpressionTest {
     }
 
     @Test
+    public void testStringExpression() throws ParseException {
+        BasicExpressionContext context = new BasicExpressionContext();
+
+        Assert.assertEquals("LIZARD", Expression.parse("uppercase(\"lizard\")").evaluate(context));
+    }
+
+    @Test
     public void testFunctionExpression() throws ParseException {
         BasicExpressionContext context = new BasicExpressionContext();
 

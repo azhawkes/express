@@ -21,6 +21,7 @@ public class BasicExpressionContext implements ExpressionContext {
         functions.put("htmlunescape", new HtmlUnescapeFunction());
         functions.put("jsescape", new JsEscapeFunction());
         functions.put("jsunescape", new JsUnescapeFunction());
+        functions.put("timestamp", new TimestampFunction());
     }
 
     public String getVariable(String name) {

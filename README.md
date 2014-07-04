@@ -87,6 +87,7 @@ HTTP and web apps.
 * `htmlescape/htmlunescape` - escape a string so it can be rendered in an HTML document
 * `xmlescape/xmlunescape` - pretty much the same as htmlescape/htmlunescape
 * `uppercase/lowercase` - umm, yeah...
+* `timestamp` - format the current date/time as a timestamp
 
 ### Registering Custom Functions
 
