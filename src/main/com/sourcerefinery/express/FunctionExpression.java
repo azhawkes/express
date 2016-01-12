@@ -2,6 +2,9 @@ package com.sourcerefinery.express;
 
 import com.sourcerefinery.express.exceptions.EvaluationException;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 /**
  * A function expression.
  */
@@ -14,17 +17,25 @@ public class FunctionExpression extends Expression {
         this.payload = payload;
     }
 
-    public String evaluate(ExpressionContext context) throws EvaluationException {
-        Function function = context.getFunction(name);
+    public InputStream evaluate(ExpressionContext context) throws EvaluationException {
+        try {
+            Function function = context.getFunction(name);
 
-        if (function != null) {
-            Object value = function.evaluate(payload.evaluate(context));
+            if (function != null) {
+                Object value = function.evaluate(payload.evaluate(context));
 
-            if (value != null) {
-                return String.valueOf(value);
+                if (value instanceof String) {
+                    return new ByteArrayInputStream(((String) value).getBytes());
+                } else if (value instanceof Number) {
+                    return new ByteArrayInputStream(value.toString().getBytes());
+                } else if (value instanceof InputStream) {
+                    return (InputStream) value;
+                }
             }
+        } catch (Exception e) {
+            throw new EvaluationException("failed to evaluate function");
         }
 
-        return "";
+        return new ByteArrayInputStream(new byte[0]);
     }
 }
