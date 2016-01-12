@@ -1,5 +1,8 @@
 package com.sourcerefinery.express;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 /**
  * An expression that represents a literal string.
  */
@@ -10,7 +13,7 @@ public class StringExpression extends Expression {
         this.value = value;
     }
 
-    public String evaluate(ExpressionContext context) {
-        return value;
+    public InputStream evaluate(ExpressionContext context) {
+        return new ByteArrayInputStream(value.getBytes());
     }
 }

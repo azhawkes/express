@@ -1,5 +1,8 @@
 package com.sourcerefinery.express;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 /**
  * An expression that references a simple variable value.
  */
@@ -16,11 +19,11 @@ public class VariableExpression extends Expression {
         this.index = index;
     }
 
-    public String evaluate(ExpressionContext context) {
+    public InputStream evaluate(ExpressionContext context) {
         if (index == -1) {
-            return context.getVariable(name);
+            return new ByteArrayInputStream(context.getVariable(name).getBytes());
         } else {
-            return context.getVariable(name, index);
+            return new ByteArrayInputStream(context.getVariable(name, index).getBytes());
         }
     }
 }

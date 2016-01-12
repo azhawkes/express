@@ -13,7 +13,7 @@ public class TimestampFunctionTest {
         SimpleDateFormat formatter = new SimpleDateFormat(format);
         ExpressionContext context = new BasicExpressionContext();
         Expression expression = Expression.parse("timestamp(\"" + format + "\")");
-        String output = expression.evaluate(context);
+        String output = expression.evaluateToString(context);
 
         Assert.assertEquals("Outputs should be the same", formatter.format(new Date()), output);
     }
@@ -24,6 +24,6 @@ public class TimestampFunctionTest {
         Expression expression = Expression.parse("timestamp()");
         String timestamp = String.valueOf(System.currentTimeMillis() / 1000L);
 
-        Assert.assertEquals("Should be a timestamp", timestamp, expression.evaluate(context));
+        Assert.assertEquals("Should be a timestamp", timestamp, expression.evaluateToString(context));
     }
 }

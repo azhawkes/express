@@ -1,5 +1,7 @@
 package com.sourcerefinery.express;
 
+import com.sourcerefinery.express.functions.*;
+
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -22,6 +24,7 @@ public class BasicExpressionContext implements ExpressionContext {
         functions.put("jsescape", new JsEscapeFunction());
         functions.put("jsunescape", new JsUnescapeFunction());
         functions.put("timestamp", new TimestampFunction());
+        functions.put("loadfile", new LoadFileFunction());
     }
 
     public String getVariable(String name) {

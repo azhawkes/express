@@ -1,5 +1,10 @@
 package com.sourcerefinery.express;
 
+import com.sourcerefinery.express.exceptions.EvaluationException;
+import com.sourcerefinery.express.exceptions.ParseException;
+import com.sourcerefinery.express.utils.Converter;
+
+import java.io.InputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +18,11 @@ public abstract class Expression {
     private static final Pattern FUNCTION_PATTERN = Pattern.compile("^\\s*?(\\w+)\\s*?\\((.*?)\\)\\s*?$");
     private static final Pattern EMPTY_PATTERN = Pattern.compile("^\\s*$");
 
-    public abstract String evaluate(ExpressionContext context);
+    public abstract InputStream evaluate(ExpressionContext context) throws EvaluationException;
+
+    public String evaluateToString(ExpressionContext context) throws EvaluationException {
+        return Converter.toString(evaluate(context));
+    }
 
     public static Expression parse(String str) throws ParseException {
         Matcher matcher;
