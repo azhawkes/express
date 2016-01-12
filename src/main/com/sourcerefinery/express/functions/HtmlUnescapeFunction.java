@@ -1,4 +1,4 @@
-package com.sourcerefinery.express;
+package com.sourcerefinery.express.functions;
 
 import com.sourcerefinery.express.Function;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -7,7 +7,7 @@ import org.apache.commons.lang.StringEscapeUtils;
  * Unescapes an HTML-escaped string.
  */
 public class HtmlUnescapeFunction implements Function {
-    public String evaluate(String arg) {
-        return StringEscapeUtils.unescapeHtml(arg);
+    public Object evaluate(Object arg) {
+        return StringEscapeUtils.unescapeHtml((String) arg);
     }
 }

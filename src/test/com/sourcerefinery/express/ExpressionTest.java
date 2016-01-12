@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ExpressionTest {
 
     @Test
-    public void testVariableExpression() throws ParseException {
+    public void testVariableExpression() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setVariable("person", "Yukon Cornelius");
@@ -20,7 +20,7 @@ public class ExpressionTest {
     }
 
     @Test
-    public void testUndefinedVariableExpression() throws ParseException {
+    public void testUndefinedVariableExpression() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setVariable("person", "Yukon Cornelius");
@@ -31,7 +31,7 @@ public class ExpressionTest {
     }
 
     @Test
-    public void testArrayExpression() throws ParseException {
+    public void testArrayExpression() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setArray("person", new String[]{"Yukon", "Cornelius", "yukon@corneliusfamily.com", "42"});
@@ -43,7 +43,7 @@ public class ExpressionTest {
     }
 
     @Test
-    public void testUndefinedArrayExpression() throws ParseException {
+    public void testUndefinedArrayExpression() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setArray("person", new String[]{"Yukon", "Cornelius", "yukon@corneliusfamily.com", "42"});
@@ -52,7 +52,7 @@ public class ExpressionTest {
     }
 
     @Test
-    public void testArrayIndexOutOfBounds() throws ParseException {
+    public void testArrayIndexOutOfBounds() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setArray("person", new String[]{"Yukon", "Cornelius", "yukon@corneliusfamily.com", "42"});
@@ -61,14 +61,14 @@ public class ExpressionTest {
     }
 
     @Test
-    public void testStringExpression() throws ParseException {
+    public void testStringExpression() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         Assert.assertEquals("LIZARD", Expression.parse("uppercase(\"lizard\")").evaluate(context));
     }
 
     @Test
-    public void testFunctionExpression() throws ParseException {
+    public void testFunctionExpression() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setVariable("person", "Yukon");
@@ -77,7 +77,7 @@ public class ExpressionTest {
     }
 
     @Test
-    public void testNestedFunctionExpression() throws ParseException {
+    public void testNestedFunctionExpression() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setArray("person", new String[]{"Yukon", "Cornelius", "yukon@corneliusfamily.com", "42"});
@@ -86,7 +86,7 @@ public class ExpressionTest {
     }
 
     @Test
-    public void testUrlEncodeExpression() throws ParseException {
+    public void testUrlEncodeExpression() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setArray("person", new String[]{"Yukon", "Cornelius", "yukon@corneliusfamily.com", "42", "#@*%#),,-\""});
@@ -95,7 +95,7 @@ public class ExpressionTest {
     }
 
     @Test
-    public void testParsingWithWhitespace() throws ParseException {
+    public void testParsingWithWhitespace() throws Exception {
         BasicExpressionContext context = new BasicExpressionContext();
 
         context.setArray("person", new String[]{"Yukon", "Cornelius", "yukon@corneliusfamily.com", "42"});

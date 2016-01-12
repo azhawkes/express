@@ -1,5 +1,7 @@
 package com.sourcerefinery.express;
 
+import com.sourcerefinery.express.exceptions.EvaluationException;
+
 /**
  * A function expression.
  */
@@ -12,13 +14,17 @@ public class FunctionExpression extends Expression {
         this.payload = payload;
     }
 
-    public String evaluate(ExpressionContext context) {
+    public String evaluate(ExpressionContext context) throws EvaluationException {
         Function function = context.getFunction(name);
 
         if (function != null) {
-            return function.evaluate(payload.evaluate(context));
-        } else {
-            return "";
+            Object value = function.evaluate(payload.evaluate(context));
+
+            if (value != null) {
+                return String.valueOf(value);
+            }
         }
+
+        return "";
     }
 }

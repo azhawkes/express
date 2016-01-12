@@ -1,5 +1,7 @@
 package com.sourcerefinery.express;
 
+import com.sourcerefinery.express.functions.*;
+
 import java.util.Hashtable;
 import java.util.Map;
 

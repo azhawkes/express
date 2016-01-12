@@ -1,4 +1,4 @@
-package com.sourcerefinery.express;
+package com.sourcerefinery.express.functions;
 
 import com.sourcerefinery.express.Function;
 
@@ -6,7 +6,7 @@ import com.sourcerefinery.express.Function;
  * Simple function that turns a string to uppercase.
  */
 public class LowercaseFunction implements Function {
-    public String evaluate(String payload) {
-        return payload.toLowerCase();
+    public Object evaluate(Object arg) {
+        return ((String) arg).toLowerCase();
     }
 }

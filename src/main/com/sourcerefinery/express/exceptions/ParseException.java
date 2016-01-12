@@ -1,4 +1,4 @@
-package com.sourcerefinery.express;
+package com.sourcerefinery.express.exceptions;
 
 /**
  * Exception that means an expression failed to parse.

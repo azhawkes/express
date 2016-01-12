@@ -1,8 +1,10 @@
 package com.sourcerefinery.express;
 
+import com.sourcerefinery.express.exceptions.EvaluationException;
+
 /**
  * A simple function that does something with a payload.
  */
 public interface Function {
-    public String evaluate(String arg) throws EvaluationException;
+    Object evaluate(Object arg) throws EvaluationException;
 }
