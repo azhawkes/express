@@ -2,6 +2,7 @@ package com.sourcerefinery.express.functions;
 
 import com.sourcerefinery.express.Function;
 import com.sourcerefinery.express.exceptions.EvaluationException;
+import com.sourcerefinery.express.utils.Converter;
 
 import java.net.URLDecoder;
 
@@ -11,7 +12,7 @@ import java.net.URLDecoder;
 public class UrlDecodeFunction implements Function {
     public Object evaluate(Object arg) throws EvaluationException {
         try {
-            return URLDecoder.decode((String) arg, "UTF-8");
+            return URLDecoder.decode(Converter.toString(arg), "UTF-8");
         } catch (Exception e) {
             throw new EvaluationException("failed to decode URL encoded string [" + arg + "]");
         }
