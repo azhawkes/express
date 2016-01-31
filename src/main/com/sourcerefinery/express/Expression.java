@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
  */
 public abstract class Expression {
     private static final Pattern STRING_PATTERN = Pattern.compile("^\\s*?\"(.*)\"\\s*?$");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^\\s*?(\\d+\\.?\\d*)\\s*?$");
     private static final Pattern VAR_PATTERN = Pattern.compile("^\\s*?(\\w+)\\s*?$");
     private static final Pattern ARRAY_PATTERN = Pattern.compile("^\\s*?(\\w+)\\s*?\\[\\s*?(\\d+)\\s*?]\\s*?$");
     private static final Pattern FUNCTION_PATTERN = Pattern.compile("^\\s*?(\\w+)\\s*?\\((.*?)\\)\\s*?$");
@@ -29,6 +30,8 @@ public abstract class Expression {
 
         if ((matcher = STRING_PATTERN.matcher(str)).matches()) {
             return new StringExpression(matcher.group(1));
+        } else if ((matcher = NUMBER_PATTERN.matcher(str)).matches()) {
+            return new NumberExpression(matcher.group(1));
         } else if ((matcher = VAR_PATTERN.matcher(str)).matches()) {
             return new VariableExpression(matcher.group(1));
         } else if ((matcher = ARRAY_PATTERN.matcher(str)).matches()) {

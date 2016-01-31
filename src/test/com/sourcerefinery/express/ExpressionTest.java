@@ -1,5 +1,7 @@
 package com.sourcerefinery.express;
 
+import com.sourcerefinery.express.exceptions.EvaluationException;
+import com.sourcerefinery.express.utils.Converter;
 import junit.framework.Assert;
 import org.junit.Test;
 
@@ -65,6 +67,27 @@ public class ExpressionTest {
         BasicExpressionContext context = new BasicExpressionContext();
 
         Assert.assertEquals("LIZARD", Expression.parse("uppercase(\"lizard\")").evaluateToString(context));
+    }
+
+    @Test
+    public void testNumberExpression() throws Exception {
+        BasicExpressionContext context = new BasicExpressionContext();
+
+        Assert.assertEquals("69", Expression.parse("69").evaluateToString(context));
+    }
+
+    @Test
+    public void testNumberExpressionWithMath() throws Exception {
+        BasicExpressionContext context = new BasicExpressionContext();
+
+        context.setFunction("double", new Function() {
+            @Override
+            public Object evaluate(Object arg) throws EvaluationException {
+                return String.valueOf(Double.parseDouble(Converter.toString(arg)) * 2);
+            }
+        });
+
+        Assert.assertEquals("276.0", Expression.parse("double(double(69))").evaluateToString(context));
     }
 
     @Test
