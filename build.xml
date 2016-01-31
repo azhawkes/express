@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <project name="express" default="jar">
-	<property name="express.version" value="0.4" />
+	<property name="express.version" value="0.5" />
 	
 	<target name="compile">
 		<mkdir dir="target"/>
