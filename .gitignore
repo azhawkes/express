@@ -1,6 +1,8 @@
 target/classes
 target/tests
 
+gradle.properties
+
 .idea
 
 *.class
