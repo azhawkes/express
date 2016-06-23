@@ -1,7 +1,10 @@
-target/classes
-target/tests
+build
 
+gradle.properties
+
+.gradle
 .idea
+*.iml
 
 *.class
 
