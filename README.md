@@ -13,7 +13,7 @@ You could easily extend it by declaring your own functions and hooking up to you
 
 ### Background
 
-This project is yet another spin-off from Loadster (www.loadsterperformance.com). Loadster scripts are mostly a 
+This project is yet another spin-off from [Loadster](https://loadster.app). Loadster scripts are mostly a 
 chain of HTTP requests, recorded or manually entered with a graphical script editor. You can also do neat tricks like 
 capturing part of an HTTP response to use in a future request: for example, Command #1 might do a POST to save some 
 resource on the server, and you have to then capture and reuse the resource's ID from the HTTP response to use in 
@@ -83,6 +83,7 @@ Since this was originally built for Loadster, most of the included functions hav
 HTTP and web apps.
 
 * `urlencode/urldecode` - apply or strip off URL encoding
+* `base64encode/base64decode` - encodes data as Base64, or the reverse
 * `jsescape/jsunescape` - escape a string so it can be quoted in JavaScript/JSON
 * `htmlescape/htmlunescape` - escape a string so it can be rendered in an HTML document
 * `xmlescape/xmlunescape` - pretty much the same as htmlescape/htmlunescape
