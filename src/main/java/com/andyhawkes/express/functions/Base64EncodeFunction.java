@@ -13,7 +13,7 @@ public class Base64EncodeFunction implements Function {
     @Override
     public Object evaluate(Object o) throws EvaluationException {
         try {
-            return Base64.getEncoder().encode(Converter.toString(o).getBytes());
+            return Base64.getEncoder().encodeToString(Converter.toString(o).getBytes());
         } catch (Exception e) {
             throw new EvaluationException("failed to Base64 encode string [" + o + "]");
         }
